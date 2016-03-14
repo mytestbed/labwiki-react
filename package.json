@@ -1,0 +1,40 @@
+{
+  "name": "labwiki2-test",
+  "version": "0.0.0",
+  "description": "Experimenting with Redux/React",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xxx"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "babel-polyfill": "^6.3.14",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-redux": "^4.2.1",
+    "react-addons-update": "^0.14.7",
+    "redux": "^3.2.1",
+    "redux-thunk": "^1.0.3",
+    "lodash.throttle": "^4.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.3.15",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babel-preset-react-hmre": "^1.1.1",
+    "express": "^4.13.3",
+    "json-loader": "^0.5.3",
+    "redux-logger": "^2.0.1",
+    "webpack": "^1.9.11",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.9.1",
+    "copy-webpack-plugin": "^1.1.1",
+    "eslint-config-airbnb": "^6.1.0",
+    "eslint-plugin-react": "^4.2.1",
+    "eslint": "^2.4.0"
+  }
+}

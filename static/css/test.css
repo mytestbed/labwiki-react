@@ -1,0 +1,39 @@
+.content {
+  overflow: auto;
+  background: #0f0;
+}
+
+.column {
+    background: #000;
+    float: left;
+}
+
+.widget {
+    background: red;
+    text-align: center;
+    margin: 5px;
+    width: auto; 
+    
+}
+
+.widget .widgetHeader {
+  height: 25px;
+  text-align: left;
+  background: lightgray;
+}
+
+.widget .widgetBody {
+    background: #FFF;
+    text-align: center;
+    width: auto; 
+    height: auto;
+}
+
+.widget .wFlashed {
+  background: yellow;
+}
+
+.unknownWidget {
+  background: #F00;
+  height: 150px;
+}
