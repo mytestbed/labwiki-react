@@ -77,6 +77,10 @@ const store = createStore(
       widgets: [],
     },
     widgets: {},
+    window: {
+      height: 100,
+      width: 100
+    }
   },
   compose(
     applyMiddleware(...middleware),
