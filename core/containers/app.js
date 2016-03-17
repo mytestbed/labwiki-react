@@ -6,6 +6,7 @@ import ContentContainer from './ContentContainer';
 function app() {
   return (
     <div id="App" >
+      <h1>Siiiigh</h1>
       <ContentContainer />
     </div>
   );
