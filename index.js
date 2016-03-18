@@ -5,6 +5,7 @@ import app from './core/index.js';
 
 // List all plugins here to get them registered
 import './plugins/wiki';
+import './plugins/code';
 
 if (module.hot) {
   // Support hot reloading of components
