@@ -1,3 +1,5 @@
+let styles = require('./core/styles/global.css');
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 

@@ -1,3 +1,5 @@
+import styles from '../styles/style.css';
+
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
@@ -24,7 +26,7 @@ function contentContainer(props) {
   }
 
   return (
-    <div id="content" className="content" style={{ width: `${props.window.width || 900}px` }}>
+    <div id="content" className={ styles.content } style={{ width: `${props.window.width || 900}px` }}>
       { React.createElement(ColumnContainer, calcColumnState(LEFT_SIDE)) }
       { React.createElement(ColumnContainer, calcColumnState(RIGHT_SIDE)) }
     </div>

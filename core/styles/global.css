@@ -1,0 +1,13 @@
+@import "./reset.css";
+
+html, body, #root, #App {
+  height: 100%;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}

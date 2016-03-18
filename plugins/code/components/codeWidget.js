@@ -1,3 +1,5 @@
+let styles = require('../../../node_modules/react-codemirror/node_modules/codemirror/lib/codemirror.css');
+
 import React, { PropTypes } from 'react';
 import Codemirror from 'react-codemirror';
 import { log } from '../../../core';

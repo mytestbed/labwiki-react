@@ -1,0 +1,67 @@
+.full-height {
+	height: 100%;
+}
+
+.column {
+	compose: full-height;
+	float: left;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+.column:first-child {
+  border-right: 1px solid wheat;
+}
+
+.column-item {
+	flex-grow: 1;
+    margin: 1rem;
+}
+
+/* App */
+.app {
+	composes: full-height;
+	background: papayawhip;
+}
+
+/* Content */
+.content {
+	composes: full-height;
+	overflow: auto;
+}
+
+/* Widget */
+.widget {
+	composes: column-item;
+}
+
+.widgetHeader {
+	color: white;
+	padding: 0.4rem;
+	text-align: left;
+	background: tan;
+}
+
+.widgetBody {
+	background-color: white;
+	text-align: center;
+	width: auto;
+	height: auto;
+}
+
+.wFlashed {
+	background: yellow;
+}
+
+.unknownWidget {
+	composes: widget;
+	background: mistyrose;
+}
+
+.unknownWidget:after {
+	color: darkred;
+	content: 'Undefined widget';
+	padding: 1rem;
+	display: block;
+}
