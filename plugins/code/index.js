@@ -8,15 +8,7 @@ const DOMAIN = 'code';
 registerWidget('code', codeWidget);
 
 registerReducer(DOMAIN, (state, action) => {
-  switch (action.type) {
-    case FLASH_START:
-      return update(state, { widgets: { [action.widget.wid]: { flashed: { $set: true } } } });
-    case FLASH_END:
-      return update(state, { widgets: { [action.widget.wid]: { flashed: { $set: false } } } });
-    default:
-      warn('Unknown "code" action "', action, '".');
-      return state;
-  }
+  return state;
 });
 
 
