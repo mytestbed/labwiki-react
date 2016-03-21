@@ -3,7 +3,7 @@
 }
 
 .column {
-	compose: full-height;
+	composes: full-height;
 	float: left;
 	display: flex;
 	flex-direction: column;
@@ -41,17 +41,6 @@
 	padding: 0.4rem;
 	text-align: left;
 	background: tan;
-}
-
-.widgetBody {
-	background-color: white;
-	text-align: center;
-	width: auto;
-	height: auto;
-}
-
-.wFlashed {
-	background: yellow;
 }
 
 .unknownWidget {
