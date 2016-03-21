@@ -1,0 +1,11 @@
+.widgetBody {
+	background-color: white;
+	text-align: center;
+	width: auto;
+	height: auto;
+}
+
+.wFlashed {
+	composes: widgetBody;
+	background: yellow;
+}
