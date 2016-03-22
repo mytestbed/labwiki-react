@@ -16,11 +16,11 @@ function widgetHeader(props) {
   }
 
   function renderSearch() {
-    const { headerInfo } = props;
+    const { state, headerInfo } = props;
     if (headerInfo === undefined) return;
 
     return (
-      <form className={ styles.searchForm }>
+      <form className={ styles.searchForm } onSubmit={ onSearch }>
         <label className={ styles.searchLabel }>Search</label>
         <input className={ styles.searchInput } />
       </form>
@@ -31,7 +31,7 @@ function widgetHeader(props) {
 
   return (
     <div className={ styles.widgetHeader }>
-      <span className={ styles.widgetTitle }>TITLEX</span>
+      <span className={ styles.widgetTitle }>{ state.title }</span>
       { renderSearch() }
     </div>
   );

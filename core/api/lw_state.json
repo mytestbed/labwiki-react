@@ -1,21 +1,26 @@
 {
-  "left": { 
+  "left": {
     "width": 0.6,
     "widgets": [{"wid": "0"}]
   },
-  "right": { 
+  "right": {
     "width": 0.4,
     "widgets": [{"wid": "1"}, {"wid": "2"}]
   },
   "widgets": {
-    "0": { 
-      "wid": "0", 
+    "0": {
+      "wid": "0",
       "type": "wiki",
-      "title": "Sample Title",
+      "title": "Sample Wiki Title",
       "contentType": "markdown",
-      "content": "Loroemsondnf jfdhf dhj hfjd fjdhf "
+      "content": "Sample wiki entry"
     },
-    "1": { "wid": "1", "type": "code" },
+    "1": {
+      "wid": "1",
+      "type": "code",
+      "title": "sample.oedl",
+      "contentType": "oedl"
+     },
     "2": { "wid": "2", "type": "experiment" }
   }
 }

@@ -1,4 +1,4 @@
-import styles from './style.css';
+import styles from '../../../core/styles/style.css';
 //import stylesDraft from '../../../node_modules/draft-js/dist/Draft.css';
 
 import React, { PropTypes } from 'react';
@@ -27,11 +27,13 @@ function wikiWidget(props) {
   state.editorState = EditorState.createEmpty();
 
   return (
-    <Editor
-      editorState={state.editorState}
-      handleKeyCommand={handleKeyCommand}
-      onChange={updateWiki}
-      placeholder="Enter some text..." />
+    <div className={ styles.wikiWidget }>
+      <Editor
+        editorState={state.editorState}
+        handleKeyCommand={handleKeyCommand}
+        onChange={updateWiki}
+        placeholder={ state.content } />
+    </div>
   );
 }
 
