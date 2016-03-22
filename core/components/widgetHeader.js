@@ -20,10 +20,10 @@ function widgetHeader(props) {
     if (headerInfo === undefined) return;
 
     return (
-      <button className="searchButton"
-        onClick={ onSearch }
-        style={{ float: 'right' }}
-      >Search</button>
+      <form className={ styles.searchForm }>
+        <label className={ styles.searchLabel }>Search</label>
+        <input className={ styles.searchInput } />
+      </form>
     );
   }
 
