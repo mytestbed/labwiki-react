@@ -16,7 +16,9 @@
 
 .column-item {
 	flex-grow: 1;
-    margin: 1rem;
+    margin: 2rem;
+    background-color: white;
+    border-radius: 0.2rem 0.2rem 0 0;
 }
 
 /* App */
@@ -77,7 +79,7 @@
 
 .user {
 	composes: header-widget;
-	background-image: url('https://www.fillmurray.com/80/80');
+	background-image: url('https://www.fillmurray.com/70/70');
 	background-size: 100%;
 }
 
@@ -92,9 +94,10 @@
 }
 
 .widgetHeader {
-	background: #333333;
+	background: #1C3448;
 	color: white;
 	font-size: 0.8rem;
+	border-radius: 0.2rem 0.2rem 0 0;
 }
 
 .widgetTitle {
@@ -129,8 +132,6 @@
 	outline: none;
 }
 
-
-
 .searchBtn {
 	margin: 0.2rem;
 	border: 2px solid white;
@@ -138,6 +139,12 @@
 	color: white;
 
 	border-radius: 0.2rem;
+}
+
+.wikiWidget {
+	padding: 1rem;
+	background: white;
+	flex-grow: 1;
 }
 
 .unknownWidget {
