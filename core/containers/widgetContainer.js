@@ -19,8 +19,7 @@ function widgetContainer(props, bodyContainer, headerInfo) {
 }
 
 widgetContainer.propTypes = {
-  state: PropTypes.shape({}).isRequired,
-  flashRequest: PropTypes.func,
+  state: PropTypes.shape({}).isRequired
 };
 
 export default function (bodyContainer, events, headerInfo) {

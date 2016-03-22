@@ -1,38 +1,30 @@
 import styles from './style.css';
 
 import React, { PropTypes } from 'react';
+import {Editor, EditorState} from 'draft-js';
+import update from 'react-addons-update';
 
-import { flashRequest, searchInText } from '..';
+import { searchInText } from '..';
 import { log } from '../../../core';
 import createWidgetContainer from '../../../core/containers/widgetContainer';
 
+
 function wikiWidget(props) {
-  function onFlashRequest() {
-    props.flashRequest(props.state);
-  }
   const { state } = props;
-  const flClassName = (state.flashed ? styles.wFlashed : styles.widgetBody);
+  const onChange = (editorState) => update(state, { editorState: { $set: editorState }});
+
+  state.editorState = EditorState.createEmpty();
 
   return (
-    <div className={ flClassName } key={state.wid} >
-      <p style={{ lineHeight: '120px' }} >
-        WIKI
-      </p>
-      <p style={{ padding: '20px' }} >
-        <button onClick={ onFlashRequest }>
-          Press Me!
-        </button>
-      </p>
-    </div>
+    <Editor editorState={state.editorState} onChange={onChange} />
   );
 }
 
 wikiWidget.propTypes = {
-  state: PropTypes.shape({}).isRequired,
-  flashRequest: PropTypes.func.isRequired,
+  state: PropTypes.shape({}).isRequired
 };
 
-const events = { flashRequest };
+const events = {  };
 export default createWidgetContainer(wikiWidget, events, {
   titlePrefix: 'Wiki',
   search: {
