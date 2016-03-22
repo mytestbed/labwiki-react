@@ -24,7 +24,7 @@ function contentContainer(props) {
   }
 
   return (
-    <div id="content" className="content" style={{ width: `${props.window.width}px` }}>
+    <div id="content" className="content" style={{ width: `${props.window.width || 900}px` }}>
       { React.createElement(ColumnContainer, calcColumnState(LEFT_SIDE)) }
       { React.createElement(ColumnContainer, calcColumnState(RIGHT_SIDE)) }
     </div>

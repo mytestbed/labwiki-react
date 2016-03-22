@@ -67,13 +67,35 @@ const middleware = process.env.NODE_ENV === 'production' ?
 
 const store = createStore(
   topReducer,
-  {},
+  {
+    left: {
+      width: 0.4,
+      widgets: [],
+    },
+    right: {
+      width: 0.6,
+      widgets: [],
+    },
+    widgets: {},
+    window: {
+      height: 100,
+      width: 100
+    }
+  },
   compose(
     applyMiddleware(...middleware),
     window.devToolsExtension && process.env.NODE_ENV !== 'production'
       ? window.devToolsExtension() : f => f
   )
 );
+
+if (module.hot) {
+  // Enable Webpack hot module replacement for reducers
+  module.hot.accept('./reducers', () => {
+    const nextRootReducer = topReducer;
+    store.replaceReducer(nextRootReducer);
+  });
+}
 
 lwOnInit(store);
 

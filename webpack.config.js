@@ -5,8 +5,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    'webpack-hot-middleware/client',
-    './index'
+    './index',
+    'webpack-hot-middleware/client'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -16,13 +16,14 @@ module.exports = {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new CopyWebpackPlugin([{ from: 'static' }])
   ],
   module: {
     loaders: [
       {
         test: /\.js$/,
-        loaders: [ 'babel' ],
+        loaders: ['babel'],
         exclude: /node_modules/,
         include: __dirname
       },

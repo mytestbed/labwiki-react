@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "description": "Experimenting with Redux/React",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint core"
   },
   "repository": {
     "type": "git",
@@ -22,19 +23,21 @@
   },
   "devDependencies": {
     "babel-core": "^6.3.15",
+    "babel-eslint": "^5.0.0-beta4",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
-    "babel-preset-react-hmre": "^1.1.1",
+    "copy-webpack-plugin": "^1.1.1",
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.1.0",
+    "eslint-plugin-babel": "^3.0.0",
+    "eslint-plugin-react": "^4.2.1",
     "express": "^4.13.3",
     "json-loader": "^0.5.3",
+    "redbox-react": "^1.2.2",
     "redux-logger": "^2.0.1",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.9.1",
-    "copy-webpack-plugin": "^1.1.1",
-    "eslint-config-airbnb": "^6.1.0",
-    "eslint-plugin-react": "^4.2.1",
-    "eslint": "^2.4.0"
+    "webpack-hot-middleware": "^2.9.1"
   }
 }
