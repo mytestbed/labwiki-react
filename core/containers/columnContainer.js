@@ -1,3 +1,5 @@
+import styles from '../styles/style.css';
+
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
@@ -14,12 +16,12 @@ function columnContainer(props) {
       return React.createElement(wInfo.component, { state: wState, key: ws.wid });
     }
     warn('Unknown widget type "', wType, '".');
-    return React.createElement('div', { className: 'widget unknownWidget', foo: 1, key: ws.wid });
+    return React.createElement('div', { className: styles.unknownWidget, foo: 1, key: ws.wid });
   }
 
   const { column, widgets, width } = props;
   return (
-    <div className="column" style={{ width: `${width}px` }} >
+    <div className={ styles.column } style={{ width: `${width}px` }} >
       { column.widgets.map(ws => createWidget(ws, widgets)) }
     </div>
   );

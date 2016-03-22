@@ -1,6 +1,7 @@
 /**
  * Implements the header bar for a wideget
  */
+ import styles from '../styles/style.css';
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -19,18 +20,18 @@ function widgetHeader(props) {
     if (headerInfo === undefined) return;
 
     return (
-      <button className="searchButton"
-        onClick={ onSearch }
-        style={{ float: 'right' }}
-      >Search</button>
+      <form className={ styles.searchForm }>
+        <label className={ styles.searchLabel }>Search</label>
+        <input className={ styles.searchInput } />
+      </form>
     );
   }
-  
+
   const { state, headerInfo } = props;
 
   return (
-    <div className="widgetHeader foo">
-      <span className="widgetTitle">TITLEX</span>
+    <div className={ styles.widgetHeader }>
+      <span className={ styles.widgetTitle }>TITLEX</span>
       { renderSearch() }
     </div>
   );

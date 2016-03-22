@@ -1,3 +1,5 @@
+import styles from './style.css';
+
 import React, { PropTypes } from 'react';
 
 import { flashRequest, searchInText } from '..';
@@ -9,10 +11,10 @@ function wikiWidget(props) {
     props.flashRequest(props.state);
   }
   const { state } = props;
-  const className = (state.flashed ? 'widgetBody wFlashed' : 'widgetBody');
+  const flClassName = (state.flashed ? styles.wFlashed : styles.widgetBody);
 
   return (
-    <div className={ className } key={state.wid} >
+    <div className={ flClassName } key={state.wid} >
       <p style={{ lineHeight: '120px' }} >
         WIKI
       </p>

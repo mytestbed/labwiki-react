@@ -1,3 +1,4 @@
+import styles from '../styles/style.css';
 
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
@@ -9,10 +10,10 @@ function widgetContainer(props, bodyContainer, headerInfo) {
   const { state } = props;
 
   return (
-    <div className="widget" key={state.wid} >
+    <div className={ styles.widget } key={state.wid} >
       <WidgetHeader state={ state } headerInfo={ headerInfo } />
       { React.createElement(bodyContainer,
-                            update(props, { className: { $set: 'widgetBody' } })) }
+                            update(props, { className: { $set: styles.widgetBody } })) }
     </div>
   );
 }

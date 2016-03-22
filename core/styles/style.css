@@ -1,0 +1,153 @@
+.full-height {
+	height: 100%;
+}
+
+.column {
+	composes: full-height;
+	float: left;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+
+.column:first-of-type {
+  border-right: 1px solid wheat;
+}
+
+.column-item {
+	flex-grow: 1;
+    margin: 1rem;
+}
+
+/* App */
+.app {
+	composes: full-height;
+	background: #FFF4E2;
+}
+
+/* Header */
+.header {
+	justify-content: flex-end;
+	color: white;
+	display: flex;
+	flex-wrap: nowrap;
+	padding: 0.4rem;
+	text-align: left;
+	background: steelblue;
+	border-bottom: 2px solid wheat;
+}
+
+.header-widget {
+	width: 2rem;
+	height: 2rem;
+	text-indent: -9999px;
+	overflow: hidden;
+	position: relative;
+	background-size: 60%;
+	border: 2px solid white;
+	border-radius: 1rem;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-left: 0.3rem;
+	color: white;
+	background-color: #315B7E;
+}
+
+.headerTitle {
+	flex-grow: 1;
+	font-size: 1.8rem;
+	font-family: monospace;
+	line-height: 1.5;
+}
+
+.search {
+	composes: header-widget;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path fill='white' d='M3.5 0c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5c.59 0 1.17-.14 1.66-.41a1 1 0 0 0 .13.13l1 1a1.02 1.02 0 1 0 1.44-1.44l-1-1a1 1 0 0 0-.16-.13c.27-.49.44-1.06.44-1.66 0-1.93-1.57-3.5-3.5-3.5zm0 1c1.39 0 2.5 1.11 2.5 2.5 0 .66-.24 1.27-.66 1.72-.01.01-.02.02-.03.03a1 1 0 0 0-.13.13c-.44.4-1.04.63-1.69.63-1.39 0-2.5-1.11-2.5-2.5s1.11-2.5 2.5-2.5z'/></svg>");
+}
+
+.new {
+	composes: header-widget;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="white" d="M3 0v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2z" /></svg>');
+}
+
+.info {
+	composes: header-widget;
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8"><path fill="white" d="M3 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm-1.5 2.5c-.83 0-1.5.67-1.5 1.5h1c0-.28.22-.5.5-.5s.5.22.5.5-1 1.64-1 2.5c0 .86.67 1.5 1.5 1.5s1.5-.67 1.5-1.5h-1c0 .28-.22.5-.5.5s-.5-.22-.5-.5c0-.36 1-1.84 1-2.5 0-.81-.67-1.5-1.5-1.5z" transform="translate(2)"/></svg>');
+}
+
+.user {
+	composes: header-widget;
+	background-image: url('https://www.fillmurray.com/80/80');
+	background-size: 100%;
+}
+
+.content {
+	composes: full-height;
+	overflow: auto;
+}
+
+/* Widget */
+.widget {
+	composes: column-item;
+}
+
+.widgetHeader {
+	background: #333333;
+	color: white;
+	font-size: 0.8rem;
+}
+
+.widgetTitle {
+	padding: 0.5rem;
+	display: inline-block;
+}
+
+/* Swidget Search */
+.searchForm {
+	border-bottom: 1px solid papayawhip;
+	float: right;
+	margin: 0.2rem;
+}
+
+.searchLabel {
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'><path fill='wheat' d='M3.5 0c-1.93 0-3.5 1.57-3.5 3.5s1.57 3.5 3.5 3.5c.59 0 1.17-.14 1.66-.41a1 1 0 0 0 .13.13l1 1a1.02 1.02 0 1 0 1.44-1.44l-1-1a1 1 0 0 0-.16-.13c.27-.49.44-1.06.44-1.66 0-1.93-1.57-3.5-3.5-3.5zm0 1c1.39 0 2.5 1.11 2.5 2.5 0 .66-.24 1.27-.66 1.72-.01.01-.02.02-.03.03a1 1 0 0 0-.13.13c-.44.4-1.04.63-1.69.63-1.39 0-2.5-1.11-2.5-2.5s1.11-2.5 2.5-2.5z'/></svg>");
+	text-indent: -9999px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-size: 70%;
+}
+
+.searchInput {
+	display: inline-block;
+	border: none;
+	background: transparent;
+	color: white;
+	outline: none;
+}
+
+
+
+.searchBtn {
+	margin: 0.2rem;
+	border: 2px solid white;
+	background: #315B7E;
+	color: white;
+
+	border-radius: 0.2rem;
+}
+
+.unknownWidget {
+	composes: widget;
+	background: mistyrose;
+}
+
+.unknownWidget:after {
+	color: darkred;
+	content: 'Undefined widget';
+	padding: 1rem;
+	display: block;
+}
