@@ -3,11 +3,12 @@
 }
 
 .column {
-	composes: full-height;
+	height: calc(100vh - 50px);
 	float: left;
 	display: flex;
 	flex-direction: column;
 	flex-wrap: nowrap;
+	padding-top: 2rem;
 }
 
 .column:first-of-type {
@@ -15,10 +16,17 @@
 }
 
 .column-item {
+	display: flex;
+	flex-direction: column;
 	flex-grow: 1;
-    margin: 2rem;
+	flex-shrink: 1;
+    margin: 0 2rem 2rem;
     background-color: white;
     border-radius: 0.2rem 0.2rem 0 0;
+}
+
+.column-item > *:nth-child(2) {
+	flex-grow: 1;
 }
 
 /* App */

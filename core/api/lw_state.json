@@ -19,8 +19,15 @@
       "wid": "1",
       "type": "code",
       "title": "sample.oedl",
-      "contentType": "oedl"
+      "contentType": "oedl",
+      "content": "defProperty('param_A', 'foo', 'Some parameter')\n\nafter 1 do\n  info 'Hello World! I am #{prop.param_A}'\nend\nafter 5 do\n  Experiment.done\nend"
      },
-    "2": { "wid": "2", "type": "experiment" }
+    "2": {
+      "wid": "2",
+      "type": "experiment",
+      "title": "Experiment",
+      "content": "$ running current experiment...",
+      "nosearch": true
+    }
   }
 }

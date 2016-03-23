@@ -18,6 +18,7 @@ function widgetHeader(props) {
   function renderSearch() {
     const { state, headerInfo } = props;
     if (headerInfo === undefined) return;
+    if (state.nosearch) return;
 
     return (
       <form className={ styles.searchForm } onSubmit={ onSearch }>

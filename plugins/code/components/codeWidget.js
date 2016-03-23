@@ -18,7 +18,7 @@ function codeWidget(props) {
 
   return (
     <div>
-      <Codemirror ref="editor" value="//type code here" options={opts} onChange={updateCode}/>
+      <Codemirror ref="editor" value={state.content} options={opts} onChange={updateCode}/>
     </div>
   );
 }

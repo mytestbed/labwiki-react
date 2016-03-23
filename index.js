@@ -8,6 +8,7 @@ import app from './core/index.js';
 // List all plugins here to get them registered
 import './plugins/wiki';
 import './plugins/code';
+import './plugins/experiment';
 
 if (module.hot) {
   // Support hot reloading of components
