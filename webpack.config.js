@@ -26,10 +26,10 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader'),
-        exclude: /(node_modules)|(global.css)/
+        exclude: /(node_modules)|(global.css)|(RichEditor)/
       },
       {
-        test: /(.*\/node_modules\/.*css$)|(global.css$)/,
+        test: /(.*node_modules\/.*css$)|(global.css)|(RichEditor)/,
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       },
       {
