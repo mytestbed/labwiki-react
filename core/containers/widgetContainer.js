@@ -7,10 +7,10 @@ import update from 'react-addons-update';
 import WidgetHeader from '../components/widgetHeader';
 
 function widgetContainer(props, bodyContainer, headerInfo) {
-  const { state } = props;
+  const { key, state } = props;
 
   return (
-    <div className={ styles.widget } key={state.wid} >
+    <div className={ styles.widget } key={key} >
       <WidgetHeader state={ state } headerInfo={ headerInfo } />
       { React.createElement(bodyContainer,
                             update(props, { className: { $set: styles.widgetBody } })) }
@@ -19,7 +19,9 @@ function widgetContainer(props, bodyContainer, headerInfo) {
 }
 
 widgetContainer.propTypes = {
-  state: PropTypes.shape({}).isRequired
+  key: PropTypes.string.isRequired,
+  state: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({}).isRequired,
 };
 
 export default function (bodyContainer, events, headerInfo) {

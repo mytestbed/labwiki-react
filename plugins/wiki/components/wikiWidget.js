@@ -17,7 +17,7 @@ class wikiWidget extends React.Component {
     this.state = {editorState: EditorState.createEmpty()};
 
     this.focus = () => this.refs.editor.focus();
-    this.onChange = (editorState) => this.setState({editorState});
+    //this.onChange = (editorState) => this.setState({editorState});
 
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.toggleBlockType = (type) => this._toggleBlockType(type);

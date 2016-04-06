@@ -36,7 +36,11 @@ let domain2reducer;
 if (domain2reducer === undefined) domain2reducer = {}; // imports seem to be called out of order
 export function registerReducer(domain, reducer) {
   if (domain2reducer === undefined) domain2reducer = {};
-  domain2reducer[domain] = reducer;
+  let d = domain2reducer[domain];
+  if (d === undefined) {
+    d = domain2reducer[domain] = [];
+  }
+  d.push(reducer);
   log('Register reducer for domain: ', domain);
 }
 
@@ -54,12 +58,12 @@ function topReducer(state, action) {
     warn('Missing "domain" in "', action, '"');
     return state;
   }
-  const reducer = domain2reducer[action.domain];
-  if (reducer === undefined) {
-    warn('Missing "reducer" for domain "', action.domain, '"');
+  const reducers = domain2reducer[action.domain];
+  if (reducers === undefined) {
+    warn('Missing "reducers" for domain "', action.domain, '"');
     return state;
   }
-  return reducer(state, action);
+  return reducers.reduce((s, reducer) => reducer(s, action), state);
 }
 
 const middleware = process.env.NODE_ENV === 'production' ?
@@ -76,11 +80,11 @@ const store = createStore(
       width: 0.6,
       widgets: [],
     },
-    widgets: {},
+    actions: {},
     window: {
       height: 100,
       width: 100
-    }
+    },
   },
   compose(
     applyMiddleware(...middleware),

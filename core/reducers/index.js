@@ -5,9 +5,10 @@ import labwiki from '../api/labwiki';
 import { registerReducer, log, warn } from '../';
 
 // Event types
-const DOMAIN = 'lw';
-const RECEIVE_GLOBAL_STATE = `${DOMAIN}:RECEIVE_GLOBAL_STATE`;
-const WINDOW_RESIZED = `${DOMAIN}:WINDOW_RESIZED`;
+export const DOMAIN = 'lw';
+export const RECEIVED_GLOBAL_STATE = `${DOMAIN}:RECEIVED_GLOBAL_STATE`;
+export const RESOURCE_ADDED = `${DOMAIN}:RESOURCE_ADDED`;
+export const WINDOW_RESIZED = `${DOMAIN}:WINDOW_RESIZED`;
 
 function appendWindowSize(state) {
   return update(state, { window: {
@@ -24,7 +25,9 @@ export function initialState() {
       width: 0.6,
       widgets: [],
     },
-    widgets: {},
+    resources: {},
+    data: {},
+    actions: {},
   });
 }
 
@@ -35,9 +38,17 @@ function getCurrentState() {
     labwiki.getState(state => {
       // dispatch(receiveState(state))
       dispatch({
-        type: RECEIVE_GLOBAL_STATE,
+        type: RECEIVED_GLOBAL_STATE,
         domain: DOMAIN,
         state,
+      });
+      Object.keys(state.resources).forEach(rid => {
+        dispatch({
+          type: RESOURCE_ADDED,
+          domain: DOMAIN,
+          rid,
+          resource: state.resources[rid],
+        });
       });
     });
   };
@@ -52,8 +63,11 @@ function onWindowResize() {
 
 export function reducer(state, action) {
   switch (action.type) {
-    case RECEIVE_GLOBAL_STATE:
-      return appendWindowSize(action.state);
+    case RECEIVED_GLOBAL_STATE: {
+      const actions = {};
+      Object.keys(action.state.resources).map(k => (actions[k] = []));
+      return update(appendWindowSize(action.state), { $merge: { actions } });
+    }
     case WINDOW_RESIZED:
       return appendWindowSize(state);
     default:

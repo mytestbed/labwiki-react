@@ -22,8 +22,8 @@ function contentContainer(props) {
 
   function calcColumnState(side) {
     const column = props[side];
-    const { widgets } = props;
-    return { side, column, widgets, width: calcColumnWidth(side) };
+    const { resources, data } = props;
+    return { side, column, resources, data, width: calcColumnWidth(side) };
   }
 
   return (
@@ -39,7 +39,8 @@ contentContainer.propTypes = {
   window: PropTypes.shape({
     width: PropTypes.number.isRequired,
   }).isRequired,
-  widgets: PropTypes.shape({}).isRequired,
+  resources: PropTypes.shape({}).isRequired,
+  data: PropTypes.shape({}).isRequired,
 };
 
 export default connect((store) => store)(contentContainer);

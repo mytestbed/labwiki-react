@@ -1,33 +1,52 @@
 {
   "left": {
     "width": 0.6,
-    "widgets": [{"wid": "0"}]
+    "widgets": [{
+      "wid": "0",
+      "wtype": "wiki",
+      "wtype": "experiment",
+      "rid": "test.wiki"
+    }]
   },
   "right": {
     "width": 0.4,
-    "widgets": [{"wid": "1"}, {"wid": "2"}]
+    "widgets": [{
+      "wid": "1",
+      "wtype": "code",
+      "wtype": "experiment",
+      "rid": "sample.oedl"
+     }, {
+      "wid": "2",
+      "wtype": "experiment",
+      "rid": "exp1.exp",
+      "nosearch": true
+    }]
   },
-  "widgets": {
-    "0": {
-      "wid": "0",
-      "type": "wiki",
+  "resources": {
+    "test.wiki": {
+      "resourceType": "text/markdown",
       "title": "Sample Wiki Title",
-      "contentType": "markdown",
       "content": "Sample wiki entry"
     },
-    "1": {
-      "wid": "1",
-      "type": "code",
-      "title": "sample.oedl",
-      "contentType": "oedl",
+    "sample.oedl": {
+      "resourceType": "text/oedl",
+      "name": "sample.oedl",
       "content": "defProperty('param_A', 'foo', 'Some parameter')\n\nafter 1 do\n  info 'Hello World! I am #{prop.param_A}'\nend\nafter 5 do\n  Experiment.done\nend"
-     },
-    "2": {
-      "wid": "2",
-      "type": "experiment",
-      "title": "Experiment",
-      "content": "$ running current experiment...",
-      "nosearch": true
+    },
+    "exp1.exp": {
+      "resourceType": "experiment",
+      "title": "Experiment 1",
+      "content": "$ running current experiment..."
+    }
+  },
+  "data": {
+    "dt1": {
+      "schema": {},
+      "content": [
+        [0, 1],
+        [1, 4],
+        [2, 2]
+      ]
     }
   }
 }
