@@ -1,32 +1,38 @@
 import styles from '../../../node_modules/react-codemirror/node_modules/codemirror/lib/codemirror.css';
-
-import React, { PropTypes } from 'react';
-import Codemirror from 'react-codemirror';
-import { log } from '../../../core';
 import createWidgetContainer from '../../../core/containers/widgetContainer';
 
-function updateCode () {
-  log(arguments);
+import React from 'react'
+import CodeMirror from 'react-codemirror'
+import '../../../node_modules/react-codemirror/node_modules/codemirror/addon/display/autorefresh.js'
+
+const options = {
+  lineNumbers: true,
+  autoRefresh: true,
+  mode: 'javascript'
 }
 
-function codeWidget(props) {
-  const { state } = props;
-  const opts = {
-      lineNumbers: true,
-      mode: 'javascript'
+class CodeEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {code: "//code"};
+    this.updateCode = this.updateCode.bind(this);
   }
 
-  return (
-    <div>
-      <Codemirror ref="editor" value={state.content} options={opts} onChange={updateCode}/>
-    </div>
-  );
+  updateCode(newCode) {
+    this.setState({
+      code: newCode
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <CodeMirror ref="editor" value={this.state.code} options={options} onChange={this.updateCode}/>
+      </div>
+    );
+  }
 }
 
-codeWidget.propTypes = {
-  state: PropTypes.shape({}).isRequired
-};
-
-export default createWidgetContainer(codeWidget, {}, {
+export default createWidgetContainer(CodeEditor, {}, {
   titlePrefix: 'Code'
 });
