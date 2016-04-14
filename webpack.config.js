@@ -18,7 +18,6 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new CopyWebpackPlugin([{ from: 'static' }]),
     new ExtractTextPlugin('style.css', { allChunks: true })
   ],
   module: {
@@ -43,6 +42,10 @@ module.exports = {
         loaders: [ 'json' ],
         exclude: /node_modules/,
         include: __dirname
+      },
+      {
+        test: /\.jpe?g$|\.gif$|\.png$|\.svg$|\.woff$|\.ttf$|\.wav$|\.mp3$/,
+        loader: 'file'
       }
     ]
   },

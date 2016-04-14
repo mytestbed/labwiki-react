@@ -1,17 +1,18 @@
-import styles from '../../../core/styles/style.css';
-import stylesDraft from '../../../node_modules/draft-js/dist/Draft.css';
-import richEdStyles from './RichEditor.css';
-
-import React, { PropTypes } from 'react';
-import {Editor, EditorState, RichUtils} from 'draft-js';
-import update from 'react-addons-update';
-
-import { searchInText } from '..';
-import { log } from '../../../core';
+import React, {Component} from 'react'
+import ReactDOM from 'react-dom'
+import {
+  AtomicBlockUtils,
+  EditorState,
+  Entity,
+  RichUtils,
+  convertToRaw,
+} from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
 import createWidgetContainer from '../../../core/containers/widgetContainer';
+import './RichEditor.css'
+import '../../../node_modules/draft-js/dist/Draft.css'
 
-
-class wikiWidget extends React.Component {
+class RichEditor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {editorState: EditorState.createEmpty()};
@@ -22,6 +23,27 @@ class wikiWidget extends React.Component {
     this.handleKeyCommand = (command) => this._handleKeyCommand(command);
     this.toggleBlockType = (type) => this._toggleBlockType(type);
     this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
+    this.dropImg = this._dropImg.bind(this);
+    this.handleDrop = this._handleDrop.bind(this);
+  }
+
+  _dropImg(dataTransfer) {
+    const src = dataTransfer.getText();
+
+    if (!src) return false;
+
+    const entityKey = Entity.create('image', 'IMMUTABLE', {src});
+
+    return AtomicBlockUtils.insertAtomicBlock(
+      this.state.editorState,
+      entityKey,
+      ' '
+    );
+  }
+
+  _handleDrop(selection, dataTransfer, isInternal) {
+    this.onChange(this.dropImg(dataTransfer));
+    return true;
   }
 
   _handleKeyCommand(command) {
@@ -66,28 +88,29 @@ class wikiWidget extends React.Component {
     }
 
     return (
-      <div className={ styles.wikiWidget }>
-        <div className="RichEditor-root">
-          <BlockStyleControls
+      <div className="RichEditor-root" onDrop={this.onDrop}>
+
+        <BlockStyleControls
+          editorState={editorState}
+          onToggle={this.toggleBlockType}
+        />
+        <InlineStyleControls
+          editorState={editorState}
+          onToggle={this.toggleInlineStyle}
+        />
+        <div className={className} onClick={this.focus}>
+          <Editor
+            blockRendererFn={mediaBlockRenderer}
+            blockStyleFn={getBlockStyle}
+            customStyleMap={styleMap}
             editorState={editorState}
-            onToggle={this.toggleBlockType}
+            handleKeyCommand={this.handleKeyCommand}
+            handleDrop={this.handleDrop}
+            onChange={this.onChange}
+            placeholder="Tell a story..."
+            ref="editor"
+            spellCheck={true}
           />
-          <InlineStyleControls
-            editorState={editorState}
-            onToggle={this.toggleInlineStyle}
-          />
-          <div className={className} onClick={this.focus}>
-            <Editor
-              blockStyleFn={getBlockStyle}
-              customStyleMap={styleMap}
-              editorState={editorState}
-              handleKeyCommand={this.handleKeyCommand}
-              onChange={this.onChange}
-              placeholder={ this.props.state.content }
-              ref="editor"
-              spellCheck={true}
-            />
-          </div>
         </div>
       </div>
     );
@@ -194,14 +217,37 @@ const InlineStyleControls = (props) => {
   );
 };
 
-wikiWidget.propTypes = {
-  state: PropTypes.shape({}).isRequired
+function mediaBlockRenderer(block) {
+  if (block.getType() === 'atomic') {
+    return {
+      component: Media,
+      editable: false,
+    };
+  }
+
+  return null;
+}
+
+const Image = (props) => {
+  return <img src={props.src} />;
 };
 
-const events = {  };
-export default createWidgetContainer(wikiWidget, events, {
+const Media = (props) => {
+  const entity = Entity.get(props.block.getEntityAt(0));
+  const {src} = entity.getData();
+  const type = entity.getType();
+
+  let media;
+  if (type === 'image') {
+    media = <Image src={src} />;
+  } else {
+    media = null;
+  }
+
+  return media;
+};
+
+export default createWidgetContainer(RichEditor, {}, {
   titlePrefix: 'Wiki',
-  search: {
-    event: searchInText,
-  },
 });
+

@@ -1,9 +1,9 @@
-import styles from '../../../node_modules/react-codemirror/node_modules/codemirror/lib/codemirror.css';
+import styles from '../../../node_modules/codemirror/lib/codemirror.css';
 import createWidgetContainer from '../../../core/containers/widgetContainer';
 
 import React from 'react'
 import CodeMirror from 'react-codemirror'
-import '../../../node_modules/react-codemirror/node_modules/codemirror/addon/display/autorefresh.js'
+import '../../../node_modules/codemirror/addon/display/autorefresh.js'
 
 const options = {
   lineNumbers: true,
