@@ -25,7 +25,7 @@
     "2": {
       "wid": "2",
       "type": "experiment",
-      "title": "Experiment",
+      "title": "Sample experiment",
       "content": "$ running current experiment...",
       "nosearch": true
     }

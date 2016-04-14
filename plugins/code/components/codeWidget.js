@@ -14,7 +14,6 @@ const options = {
 class CodeEditor extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {code: "//code"};
     this.updateCode = this.updateCode.bind(this);
   }
 
@@ -27,7 +26,7 @@ class CodeEditor extends React.Component {
   render() {
     return (
       <div>
-        <CodeMirror ref="editor" value={this.state.code} options={options} onChange={this.updateCode}/>
+        <CodeMirror ref="editor" value={this.props.state.content} options={options} onChange={this.updateCode}/>
       </div>
     );
   }

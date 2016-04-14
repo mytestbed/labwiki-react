@@ -32,7 +32,7 @@ function widgetHeader(props) {
 
   return (
     <div className={ styles.widgetHeader }>
-      <span className={ styles.widgetTitle }>{ state.title }</span>
+      <span className={ styles.widgetType }>{ state.type }:</span> <span className={ styles.widgetTitle }>{ state.title }</span>
       { renderSearch() }
     </div>
   );
